@@ -14,7 +14,6 @@ class MainActivity : AppCompatActivity() {
 
     var array = arrayListOf("A","B","C","D","E")
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -23,6 +22,7 @@ class MainActivity : AppCompatActivity() {
         button2 = findViewById(R.id.button2)
         setBtnListener()
     }
+
     private fun setBtnListener() {
         button.setOnClickListener{
             //1-variant
@@ -32,8 +32,14 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra("RESULT", result)
             startActivity(intent)
         }
+
+        button2.setOnClickListener {
+            val text = editText.text.toString()
+            getValueUsingFor(text)
+        }
     }
-//обе
+
+    //обе
     fun getValueUsingWhile(text: String) : String? {
         var index = 0
         while (index < array.size){
@@ -49,9 +55,8 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent(this, ResultActivity::class.java)
         for (item in array){
             if (text == item){
-                intent.putExtra("TEXT",text)
-                intent.putExtra("INDEX",array.indexOf(item))
-
+                val result = "$text : $item"
+                intent.putExtra("RESULT2",result)
                 startActivity(intent)
             }
         }

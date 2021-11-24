@@ -18,10 +18,13 @@ class ResultActivity : AppCompatActivity() {
         button = findViewById(R.id.btn)
         textView = findViewById(R.id.text)
 
-        val text = intent.getStringExtra("RESULT")
-        textView.text = text.toString()
-
-
+        if (intent.getStringExtra("RESULT") != null) {
+            val text = intent.getStringExtra("RESULT")
+            textView.text = text.toString()
+        } else {
+            val text2 = intent.getStringExtra("RESULT2")
+            textView.text = text2.toString()
+        }
 
         button.setOnClickListener {
             onBackPressed()
